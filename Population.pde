@@ -64,16 +64,25 @@ class Population {
 
     newDots[0] = dots[bestDot].getBaby();
     newDots[0].isBest = true;
-
+    
     for (int i = 1; i < newDots.length; i++) {
 
-
+//-----------------SELECT 2 PARENTS---------------------------<<<<<<<<<<<<<<<<<<<<
       // select parent based on fitness
-      Dot parent = selectParent();
+      //Dot parent = selectParent();
+      Dot parent1 = selectParent();
+      Dot parent2 = selectParent();
+      newDots[i] = new Dot();
+      //newDots[i] = parent1.getBaby();
+      newDots[i] = newDots[i].crossover(parent1,parent2);
+      //get baby from them ------------- MAKE BABY FROM PARENTS INSTEAD in brain.clone and dot.getBaby
 
-      //get baby from them
-      newDots[i] = parent.getBaby();
+      
+      // choose second parent, replace the first part of newDots with the data from the second parent
     }
+    
+    
+    
     dots = newDots.clone();
     gen ++;
   }
